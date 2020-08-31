@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  Desafios Módulo 2 - Iniciando no Front-end
+  Desafios Módulo 3 - Iniciando no Back-end
 </h3>
 
 <blockquote align="center">“Faça seu melhor, mas sempre com prazo de entrega!”</blockquote>
@@ -21,23 +21,17 @@
 </p>
 
 <p align="center">
-  <a href="#file_cabinet-materiais">Materiais</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-desafios">Desafios</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#calendar-entrega">Entrega</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
   <a href="#memo-licença">Licença</a>
 </p>
 
-## :file_cabinet: Materiais
-
-- [Elementos principais do HTML](materiais/html.pdf)
-- [Propriedades importantes no CSS](materiais/css.pdf)
-
 ## :rocket: Desafios
 
-- [Primeiro HTML](desafios/02-1-primeiro-html.md)
-- [Página de descrição](desafios/02-2-pagina-descricao.md)
-- [Página de cursos e iframe](desafios/02-3-pagina-cursos-e-iframe.md)
-- [Construindo Foodfy](desafios/02-foodfy.md)
+- [Primeiro servidor](desafios/03-1-primeiro-servidor.md)
+- [Arquivos nunjucks e dados dinâmicos](desafios/03-2-nunjucks-e-dados-dinamicos.md)
+- [Página de descrição do curso](desafios/03-3-pagina-descricao-curso.md)
+- [Refatorando Foodfy](desafios/03-refatorando-foodfy.md)
 
 ## :calendar: Entrega
 
