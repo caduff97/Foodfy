@@ -3,7 +3,10 @@ const cards = document.querySelectorAll('.card')
 
 for (let card of cards) {
     card.addEventListener('click', () => {
-        recipeTitle = card.querySelector('.card__title p').innerHTML
-        window.location.href = `/recipe?title=${recipeTitle}`
+        recipeId = card.querySelector('.card__id').innerHTML
+
+        console.log(window.location.href)
+
+        window.location.href = `/recipe/${recipeId}`
     })
 }

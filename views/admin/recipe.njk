@@ -1,0 +1,80 @@
+{% extends "admin/layout.njk" %}
+
+{% block content %}
+
+   <main>
+
+      <div class="title">
+         
+         <p><strong>Receita: {{ recipe.title }}</strong></p>
+
+         <a href="/admin/recipe/{{ recipe.id }}/edit">Editar receita</a>
+
+      </div>
+
+      <div class="recipe">
+         <img src="{{ recipe.image_url }}" alt="Imagem de {{ recipe.title }}">
+
+         <div class="recipe__title">
+            <p>{{ recipe.title }}</p>
+         </div>
+
+         <div class="recipe__author">
+            <p>por {{ recipe.author }}</p>
+         </div>
+
+         <div class="recipe__details">
+
+            <section>
+               <div class="detail__title">
+                  <h1>Ingredientes</h1>
+               </div>
+
+               <div class="detail__content">
+                  <ul>
+                     {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                     {% endfor %}
+                  </ul>
+               </div>
+            </section>
+
+            <section>
+               <div class="detail__title">
+                  <h1>Modo de preparo</h1>
+               </div>
+
+               <div class="detail__content">
+                  <ul>
+                     {% for step in recipe.steps %}
+                        <li>{{ step }}</li>
+                     {% endfor %}
+                  </ul>
+               </div>
+            </section>
+
+            <section>
+               <div class="detail__title">
+                  <h1>Informações adicionais</h1>
+               </div>
+
+               <div class="detail__content">
+                  <p class="information">
+                     {% if recipe.information == '' %}Sem informações adicionais{% endif %}
+                     {{ recipe.information | striptags(true) | escape | nl2br}}
+                  </p>
+               </div>
+            </section>
+
+         </div>
+
+      </div>
+
+   </main>
+
+{% endblock content %}
+
+{% block scripts %}
+   <script src="showride.js"></script>
+   <script src="header.js"></script>
+{% endblock scripts %}

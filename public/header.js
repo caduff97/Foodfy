@@ -5,12 +5,10 @@ function nameFile(address) {
 
 function titleMark() {
     titles = document.querySelector(".menu").querySelectorAll("a")
-    page = nameFile(document.location.href)
-
+    section = document.location.pathname
+    
     for (var title of titles) {
-        if (page.substring(6,0) == nameFile(title.href).substring(6,0) ) {
-            title.setAttribute("id", "current-page")
-        } else if (page == "recipe" && nameFile(title.href) == "recipes") {
+        if (section.substring(1,7) == nameFile(title.href).substring(6,0)) {
             title.setAttribute("id", "current-page")
         }
     }

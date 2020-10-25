@@ -1,13 +1,15 @@
 const express = require("express")
 const nunjucks = require("nunjucks")
-const recipes = require("./data")
-const { reduce } = require("../../Cursos_Aulas/LaunchBase/Works/aulajs/modulo03/data")
-
+const routes = require("./routes")
 const server = express()
+const methodOverride = require("method-override")
+
+server.use(express.urlencoded({ extended: true }))
+server.use(express.static("public"))
+server.use(methodOverride("_method"))
+server.use(routes)
 
 server.set("view engine", "njk")
-
-server.use(express.static('public'))
 
 nunjucks.configure("views", {
    express: server,
@@ -15,31 +17,6 @@ nunjucks.configure("views", {
    noCache: true
 })
 
-
-server.get("/", (req, res) =>{
-   return res.render("index", {recipes})
+server.listen(5000, () => {
+   console.log("server is running")
 })
-
-server.get("/about", (req, res) =>{
-   return res.render("about")
-})
-
-server.get("/recipes", (req, res) =>{
-   return res.render("recipes", {recipes})
-})
-
-server.get("/recipe", (req, res) => {
-   const title = req.query.title
-   
-   const recipe = recipes.find((recipe) => {
-      return recipe.title == title
-   })
-
-   if (!recipe) {
-      return res.send("page not found!")
-   }
-
-   return res.render("recipe", {recipe})
-})
-
-server.listen(5000)

@@ -1,16 +1,16 @@
-{% extends "layout.njk" %}
+{% extends "view/layout.njk" %}
 
 {% block content %}
 
    <div class="recipe">
-      <img src="{{ recipe.image }}" alt="Imagem de {{ recipe.title }}">
+      <img src="{{ recipe.image_url }}" alt="Imagem de {{ recipe.title }}">
 
       <div class="recipe__title">
          <p>{{ recipe.title }}</p>
       </div>
 
       <div class="recipe__author">
-         <p>{{ recipe.author }}</p>
+         <p>por {{ recipe.author }}</p>
       </div>
 
       <div class="recipe__details">
@@ -38,8 +38,8 @@
 
             <div class="detail__content">
                <ul>
-                  {% for instruction in recipe.preparation %}
-                     <li>{{ instruction }}</li>
+                  {% for step in recipe.steps %}
+                     <li>{{ step }}</li>
                   {% endfor %}
                </ul>
             </div>
@@ -66,6 +66,6 @@
 {% endblock content %}
 
 {% block scripts %}
-   <script src="showride.js"></script>
-   <script src="header.js"></script>
+    <script src="/header.js"></script>
+    <script src="/showride.js"></script>
 {% endblock scripts %}
