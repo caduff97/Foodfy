@@ -1,0 +1,40 @@
+{% extends "../../admin/layout.njk" %}
+
+{% block content %}
+
+    <main class="admin">
+        <section>
+            <div>
+                
+                <div class="title">
+                    <strong>Gerenciar chefs</strong>
+                    <a href="/admin/chefs/create">Adicionar chef</a>
+                </div>
+
+                <div class="chefsCards">
+
+                    {% for chef in chefs %}
+
+                        <div class="chefCard">
+                            <div class="chef_avatar" style="background: url({{ chef.avatar_url }}) no-repeat center center / cover;"></div>
+                            
+                            <div>
+                                <div class="chef_name">
+                                    <p>{{ chef.name }}</p>
+                                </div>
+
+                                <div class="chef_link">
+                                    <a href="/admin/chef/{{ chef.id }}">Visualizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

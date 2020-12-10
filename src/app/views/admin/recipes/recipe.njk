@@ -1,0 +1,80 @@
+{% extends "../../admin/layout.njk" %}
+
+{% block content %}
+
+   <main class="admin">
+
+      <section>
+            
+         <div class="title">
+            <strong>Receita: {{ recipe.title }}</strong>
+            <a href="/admin/recipe/{{ recipe.id }}/edit">Editar receita</a>
+         </div>
+         
+
+         <div class="recipe">
+            <img src="{{ recipe.image }}" alt="Imagem de {{ recipe.title }}">
+
+            <div class="recipe__title">
+               <p>{{ recipe.title }}</p>
+            </div>
+
+            <div class="recipe__author">
+               <p>por {{ recipe.chef_name }}</p>
+            </div>
+
+            <div class="recipe_details">
+
+               <section>
+                  <div class="detail_title">
+                     <h1>Ingredientes</h1>
+                  </div>
+
+                  <div class="detail_content">
+                     <ul>
+                        {% for ingredient in recipe.ingredients %}
+                           <li>{{ ingredient }}</li>
+                        {% endfor %}
+                     </ul>
+                  </div>
+               </section>
+
+               <section>
+                  <div class="detail_title">
+                     <h1>Modo de preparo</h1>
+                  </div>
+
+                  <div class="detail_content">
+                     <ul>
+                        {% for step in recipe.preparation %}
+                           <li>{{ step }}</li>
+                        {% endfor %}
+                     </ul>
+                  </div>
+               </section>
+
+               <section>
+                  <div class="detail_title">
+                     <h1>Informações adicionais</h1>
+                  </div>
+
+                  <div class="detail_content">
+                     <p class="information">
+                        {% if recipe.information == '' %}Sem informações adicionais{% endif %}
+                        {{ recipe.information | striptags(true) | escape | nl2br}}
+                     </p>
+                  </div>
+               </section>
+
+            </div>
+
+         </div>
+
+      </section>
+
+   </main>
+
+{% endblock content %}
+
+{% block scripts %}   
+{% endblock scripts %}

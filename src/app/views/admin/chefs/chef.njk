@@ -1,0 +1,88 @@
+{% extends "../../admin/layout.njk" %}
+
+{% block content %}
+
+   <main class="admin">
+      <section>
+            
+            <div class="title">
+               <strong>Chef: {{ chef.name }}</strong>
+               <a href="/admin/chef/{{ chef.id }}/edit">Editar Chef</a>
+            </div>
+
+         <div class="chef">
+            <img src="{{ chef.avatar_url }}" alt="Imagem de {{ chef.name }}">
+
+            <div class="chef__name">
+               <p>{{ chef.name }}</p>
+            </div>
+
+            <div class="chef__totalRecipes">
+               <p>
+                  {% if chef.total_recipes == 1 %}
+                     {{ chef.total_recipes }} receita
+                  {% else %}
+                     {{ chef.total_recipes }} receitas
+                  {% endif %}
+               </p>
+            </div>
+
+            <div class="chef__recipes">
+               <h1>Receitas</h1>
+
+                     <div class="recipesCards">
+                        {% for chefRecipe in chefRecipes %}
+
+                           <div class="recipeCard">
+                              <div 
+                                 class="recipe_img"
+                                 style="background: url({{ chefRecipe.image }}) no-repeat center center / cover;">
+                              </div>
+                              
+                              <div class="recipe_details">
+                                 <div class="recipe_title">
+                                       <p>{{ chefRecipe.title }}</p>
+                                 </div>
+
+                                 <div class="recipe_chef">
+                                       <p>por {{ chef.name }}</p>
+                                 </div>
+
+                                 <div class="recipe_link">
+                                       <a href="/admin/recipe/{{ chefRecipe.id }}">Visualizar</a>
+                                 </div>
+                              </div>
+                           </div>
+
+                        {% endfor %}
+                     </div>
+                     
+         
+                            
+                            
+                            {# <div class="recipe_details">
+                                <div class="recipe_title">
+                                    <p>{{ recipe.title }}</p>
+                                </div>
+
+                                <div class="recipe_chef">
+                                    <p>por {{ recipe.chef_name }}</p>
+                                </div>
+
+                                <div class="recipe_link">
+                                    <a href="/admin/recipe/{{ recipe.id }}">Visualizar</a>
+                                </div>
+                            </div> #}
+
+            </div>
+
+         </div>
+
+      </section>
+
+   </main>
+
+{% endblock content %}
+
+{% block scripts %}   
+{% endblock scripts %}

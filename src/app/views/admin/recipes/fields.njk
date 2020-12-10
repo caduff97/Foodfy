@@ -1,0 +1,94 @@
+<div class="item">
+    <div>Imagem da receita</div>
+    <div>
+        <input
+        type="url"
+        name="image"
+        value="{{ recipe.image }}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Título da receita</div>
+    <div>
+        <input
+        type="text"
+        name="title"
+        value="{{ recipe.title }}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Chef</div>
+    <div>
+        <select name="chef">
+            <option value="" disabled selected>Selecione um chef</option>
+            {% for option in options %}
+                <option value="{{ option.id }}" {% if recipe.chef_id == option.id %} selected {% endif %}>
+                    {{ option.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Ingredientes</div>
+    <div id="ingredients">
+        {% for ingredient in recipe.ingredients %}
+            <div class="ingredient">
+                <input
+                type="text"
+                name="ingredients[]"
+                value="{{ ingredient }}">
+                <span class="rm-item material-icons">remove_circle_outline</span>
+            </div>
+        {% endfor %}
+        {% if recipe.ingredients|length == 0 %}
+            <div class="ingredient">
+                <input
+                type="text"
+                name="ingredients[]"
+                value="{{ ingredient }}">
+                <span class="rm-item material-icons">remove_circle_outline</span>
+            </div>        
+        {% endif %}
+        
+    </div>
+    <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+</div>
+
+<div class="item">
+    <div>Modo de preparo</div>
+    <div id="preparation">
+        {% for step in recipe.preparation %}
+            <div class="step">
+                <input
+                type="text"
+                name="preparation[]"
+                value="{{ step }}">
+                <span class="rm-item material-icons">remove_circle_outline</span>
+            </div>
+        {% endfor %}
+        {% if recipe.preparation|length == 0 %}
+            <div class="step">
+                <input
+                type="text"
+                name="preparation[]"
+                value="{{ step }}">
+                <span class="rm-item material-icons">remove_circle_outline</span>
+            </div>        
+        {% endif %}
+    </div>
+    <button type="button" class="add-step">Adicionar novo passo</button>
+</div>
+
+<div class="item">
+    <div>Informações adicionais</div>
+    <div>
+        <textarea
+        type="text"
+        name="information"
+        >{{ recipe.information }}</textarea>
+    </div>
+</div>

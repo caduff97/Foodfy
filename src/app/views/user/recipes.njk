@@ -1,0 +1,48 @@
+{% extends "user/layout.njk" %}
+
+{% block head %}
+    <title>Foodfy | Receitas</title>
+{% endblock head %}
+
+{% block content %}
+    <main>
+
+        <section class="recipes">
+
+            <div class="recipesCards">
+
+                {% for recipe in recipes %}
+
+                    <div class="recipeCard">
+                        <div 
+                            class="recipe_img"
+                            style="background: url({{ recipe.image }}) no-repeat center center / cover">
+                        </div>
+
+                        <div class="recipe_title">
+                            <p>{{ recipe.title }}</p>
+                        </div>
+
+                        <div class="recipe_chef">
+                            <p>por {{ recipe.chef_name }}</p>
+                        </div>
+
+                        <div class="recipe_id">{{ recipe.id }}</div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+        </section>
+
+        <div class="pagination">
+            <input type="hidden" name="total" value="{{ pagination.total }}">
+            <input type="hidden" name="page" value="{{ pagination.page }}">
+        </div>
+
+    </main>
+
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

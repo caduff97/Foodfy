@@ -1,0 +1,614 @@
+/* ====================================================================== */
+/* GLOBAL SETTINGS */
+/* ====================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+:root {
+    --text-color: #111111;
+    --intro-color: #FBDFDB;
+    --gray-color: #777777;
+    --purple-color: #6558C3;
+}
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
+
+/* ====================================================================== */
+/* USER PAGE */
+/* ====================================================================== */
+
+/* === HEADER === */
+header {
+    height: 80px;
+}
+
+header div, main {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+header div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.links a {
+    text-decoration: none;
+    color: var(--text-color);
+    margin-right: 30px;
+}
+
+.links a:first-child {
+    margin-right: 122px;
+}
+
+.links a:last-child {
+    margin-right: 0;
+}
+
+.links,
+.search {
+    margin: 0;
+}
+
+.search {
+    display: grid;
+    grid-template-columns: 1fr 91px;
+    gap: 8px;
+}
+
+.search input,
+.search button {
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.search input {
+    width: 246px;
+    height: 37px;
+    padding: 10px 15px;
+    outline: none;
+    border: 1px solid #DDDDDD;
+    font-size: 14px;
+}
+
+.search button {
+    padding: 9px 20px;
+    color: #FFFFFF;
+    background-color: var(--purple-color);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#current-page {
+    font-weight: bold;
+}
+
+/* === MAIN === */
+main {
+    margin-top: 33px;
+}
+
+/* === INTRO BANNER === */
+.intro {
+    display: flex;
+    background-color: var(--intro-color);
+    justify-content: space-between;
+    border-radius: 30px;
+}
+
+.intro div {
+    margin: 60px;
+    max-width: 316px;
+    align-self: center;
+}
+
+.intro div p strong {
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: bold;
+}
+
+.intro div p+p {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    opacity: 0.7;
+}
+
+.intro img {
+    margin: 66px 100px 0 0;
+}
+
+/* === MOST ACESSED === */
+.mostAcessed {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.mostAcessed h1 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    line-height: 28px;
+    font-weight: bold;
+}
+
+/* === RECIPES CARDS === */
+.recipesCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.recipesCards .recipe_img,
+.chefsCards .chef_avatar,
+.recipesCards .recipe_title,
+.chefsCards .chef_name,
+.recipesCards .recipe_chef,
+.chefsCards .chef_recipes {
+    cursor: pointer;
+}
+
+.recipesCards .recipe_img {
+    width: 300px;
+    height: 140px;
+    border-radius: 15px;
+}
+
+.recipesCards .recipe_title {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.recipesCards .recipe_chef {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #777777;
+}
+
+.recipesCards .recipe_id {
+    display: none;
+}
+
+/* === ABOUT PAGE === */
+.about h1 {
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+
+.about h1 strong {
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.about h1:first-child{
+    margin-top: 0;
+}
+
+.about p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+}
+
+/* === RECIPE PAGE === */
+.recipe {
+    text-align: center;
+}
+
+.recipe img {
+    margin-top: 33px;
+    border-radius: 15px;
+    height: 280px;
+}
+
+.recipe__title {
+    margin-top: 50px;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 42px;
+}
+
+.recipe__author {
+    font-size: 20px;
+    line-height: 24px;
+    color: #777777;
+    margin-top: 4px;
+}
+
+.recipe_details section:first-child {
+    margin-top: 50px;
+}
+
+.recipe_details section {
+    margin-top: 39px;
+}
+
+.detail_title {
+    display: flex;
+    align-items: center;
+}
+
+.detail_title h1 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+}
+
+.detail_title p {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    color: #999999;
+    margin-left: 8px;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.detail_content {
+    margin-top: 20px;
+}
+
+.detail_content p, 
+.detail_content ul {
+    text-align: justify;
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+}
+
+.detail_content ul {
+    list-style: inside;
+}
+
+.close-active {
+    display: none;
+}
+
+/* === PAGINATION === */
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a,
+.pagination span {
+    color: var(--purple-color);
+    text-decoration: none;
+    padding: 4px;
+    margin-right: 16px;
+}
+
+.pagination a:hover {
+    filter: brightness(0.6);
+    border-bottom: 1px solid var(--purple-color);
+}
+
+/* === CHEFS CARDS === */
+.chefsCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.chefCard {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    align-items: center;
+}
+
+.chefsCards .chef_avatar,
+.chefsCards .chef_name,
+.chefsCards .chef_chef {
+    cursor: pointer;
+}
+
+.chefsCards .chef_avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.chefsCards .chef_name {
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.chefsCards .chef_recipes {
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #777777;
+}
+
+.chefsCards .chef_id {
+    display: none;
+}
+
+/* === SEARCH PAGE === */
+main .title h1 {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 20px;
+}
+
+/* === BOTTOM === */
+.bottom {
+    padding: 23px 0;
+    margin-top: 50px;
+    font-size: 14px;
+    background-color: #EEEEEE;
+    color: #999999;
+    text-align: center;
+}
+
+
+
+
+/* ====================================================================== */
+/* ADMIN PAGE */
+/* ====================================================================== */
+
+/* === HEADER === */
+header.admin {
+    background-color: var(--text-color);
+}
+
+header.admin .links a {
+    color: #999999;
+}
+
+header.admin .links a:first-child {
+    margin-right: 50px;
+}
+
+header.admin #current-page {
+    color: #FFFFFF;
+}
+
+/* === TITLE OF ADMIN CONTENT === */
+.admin section {
+    margin: 50px 0;
+}
+
+.admin .title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.admin .title strong {
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.admin .title a {
+    margin-left: 16px;
+    padding: 9px 20px;
+    border-radius: 4px;
+    background-color: var(--purple-color);
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+}
+
+/* === RECIPES CARDS === */
+.admin .recipesCards {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+}
+
+.admin .recipeCard {
+    display: flex;
+}
+
+.admin .recipe_img {
+    width: 172px;
+    height: 80px;
+    border-radius: 8.57px;
+}
+
+.admin .recipe_details {
+    margin-left: 20px;
+}
+
+.admin .recipe_title {
+    margin-top: 0;
+}
+
+.admin .recipe_title p {
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.admin .recipe_chef p,
+.admin .recipe_link a,
+.admin .chef_link a {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.admin .recipe_chef {
+    color: var(--gray-color);
+    margin-top: 5px;
+}
+
+.admin .recipe_link,
+.admin .chef_link {
+    margin-top: 10px;
+}
+
+.admin .recipe_link a,
+.admin .chef_link a {
+    color: var(--purple-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* === RECIPE PAGE === */
+.admin .detail__title h1 {
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.admin .recipe img {
+    margin-top: 0;
+}
+
+/* === RECIPE EDIT PAGE === */
+.title div button:first-child {
+    margin-right: 10px;
+}
+
+.admin form {
+    margin-bottom: 50px;
+}
+
+.admin button,
+.admin input,
+.admin select,
+.admin textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.admin button {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin button[type="submit"] {
+    padding: 9px 20px;
+    border-radius: 4px;
+    background-color: var(--purple-color);
+    color: white;
+}
+
+.admin button[type="button"],
+.admin .rm-item {
+    background: none;
+    color: var(--purple-color);
+    margin-top: 15px;
+}
+
+.admin button[type="submit"][form="delete"] {
+    background-color: #DC4747;
+} 
+
+.admin .item {
+    margin-top: 30px;
+}
+
+.admin .item div:first-child {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+}
+
+.admin input,
+.admin select,
+.admin textarea {
+    width: 100%;
+    outline: none;
+    margin-top: 10px;
+    padding: 15px 20px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    font-weight: normal;
+}
+
+.admin select {
+    background-color: #FFFFFF;
+}
+
+.admin textarea {
+    height: 250px;
+    resize: none;
+    line-height: 24px;
+}
+
+.admin .ingredient,
+.admin .step {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+
+.admin .ingredient input,
+.admin .ingredient button,
+.admin .step input,
+.admin .step button {
+    margin-top: 0;
+}
+
+.admin .rm-item {
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+/* === CHEF PAGE === */
+.admin .chef {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin .chef img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.admin .chef__name {
+    margin-top: 30px;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 42px;
+}
+
+.admin .chef__name,
+.admin .chef__totalRecipes {
+    text-align: center;
+}
+
+.admin .chef__totalRecipes {
+    margin-top: 4px;
+    color: var(--gray-color);
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.admin .chef__recipes {
+    margin-top: 50px;
+}
+
+.admin .chef__recipes h1 {
+    font-size: 24px;
+    line-height: 28px;
+    text-align: initial;
+    margin-bottom: 30px;
+}

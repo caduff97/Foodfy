@@ -1,0 +1,68 @@
+{% extends "user/layout.njk" %}
+
+{% block content %}
+   <main>
+
+      <div class="recipe">
+         <img src="{{ recipe.image }}" alt="Imagem de {{ recipe.title }}">
+
+         <div class="recipe__title">
+            <p>{{ recipe.title }}</p>
+         </div>
+
+         <div class="recipe__author">
+            <p>por {{ recipe.chef_name }}</p>
+         </div>
+
+         <div class="recipe_details">
+
+            <section>
+               <div class="detail_title">
+                  <h1>Ingredientes</h1>
+                  <p>ESCONDER</p>
+               </div>
+
+               <div class="detail_content">
+                  <ul>
+                     {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                     {% endfor %}
+                  </ul>
+               </div>
+            </section>
+
+            <section>
+               <div class="detail_title">
+                  <h1>Modo de preparo</h1>
+                  <p>ESCONDER</p>
+               </div>
+
+               <div class="detail_content">
+                  <ul>
+                     {% for preparation in recipe.preparation %}
+                        <li>{{ preparation }}</li>
+                     {% endfor %}
+                  </ul>
+               </div>
+            </section>
+
+            <section>
+               <div class="detail_title">
+                  <h1>Informações adicionais</h1>
+                  <p>ESCONDER</p>
+               </div>
+
+               <div class="detail_content">
+                  <p class="information">
+                     {% if recipe.information == "" %}Sem informações adicionais{% endif %}
+                     {{ recipe.information | nl2br }}
+                  </p>
+               </div>
+            </section>
+
+         </div>
+
+      </div>
+
+   </main>
+{% endblock content %}

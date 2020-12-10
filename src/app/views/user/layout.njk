@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block head %}
+            <title>Foodfy</title>
+        {% endblock head %}
+
+        {% block styles %}
+            <link rel="stylesheet" href="/style.css">
+        {% endblock styles %}
+
+    </head>
+    <body>
+        <header>
+            <div>
+                <div class="links">
+                    <a href="/"><img src="/assets/logo.png" alt="logo"></a>
+                    <a href="/about">Sobre</a>
+                    <a href="/recipes">Receitas</a>
+                    <a href="/chefs">Chefs</a>
+                </div>
+
+                <form 
+                    class="search"
+                    action="/recipes/search"
+                    method="get">
+                    <input 
+                        type="text"
+                        name="filter"
+                        placeholder="Buscar receita por nome ou chef"
+                        value="{{filter}}">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </header>
+
+        {% block content %}{% endblock content %}
+
+        <div class="bottom">
+            Todos direitos reservados, receitas Foodfy.
+        </div>
+
+        {% block scripts %}
+        {% endblock scripts %}
+
+        <script src="/scripts.js"></script>
+    </body>
+</html>
