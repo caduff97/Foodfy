@@ -641,15 +641,12 @@ form .item #images-input {
     position: absolute;
 }
 
-form .item #images-upload i {
+form .item #images-upload i,
+form .item #images-preview i {
     color: #999999;
 
-    text-align: center;
-    font-size: 38px;
+    font-size: 28px;
     line-height: 28px;
-    
-    width: 28px;
-    height: 28px;
 }
 
 form .item #images-input {
@@ -661,4 +658,45 @@ form .item #images-input {
     opacity: 0;
     
     cursor: pointer;
+}
+
+form .item #images-preview {
+    position: relative;
+}
+
+form .item #images-preview .image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+form .item #images-preview .image i {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    color: #FF0000;
+    background-color: #ffffffcc;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    opacity: 0;
+}
+
+form .item #images-preview .image i:hover {
+    opacity: 1;
 }
