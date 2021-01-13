@@ -225,7 +225,8 @@ const ImagesUpload = {
         if(hasLimit(event, fileList)) return
 
         Array.from(fileList).forEach(file => {
-
+            file.id = `n${files.length}`
+            
             files.push(file)
 
             const reader = new FileReader()
@@ -235,6 +236,7 @@ const ImagesUpload = {
                 image.src = String(reader.result)
 
                 const div = getContainer(image)
+                div.id = `n${files.length - 1}`
                 preview.appendChild(div)
             }
 
@@ -270,9 +272,9 @@ const ImagesUpload = {
         const { files } =  ImagesUpload
 
         const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
-
+        
         files.forEach(file => dataTransfer.items.add(file))
-
+        
         return dataTransfer.files
     },
     getContainer(image) {
@@ -301,7 +303,7 @@ const ImagesUpload = {
 
         files.splice(index, 1)
         ImagesUpload.input.files = getAllFiles()
-
+        
         imageDiv.remove()
     },
     removeOldPhoto(event) {
@@ -310,7 +312,7 @@ const ImagesUpload = {
         if(imagesDiv.id) {
             const removedFiles = document.querySelector("input[name='removed_files']")
             if(removedFiles) {
-                removedFiles.value += `${imagesDiv}`
+                removedFiles.value += `${imagesDiv.id},`
             }
         }
 

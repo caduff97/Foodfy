@@ -17,7 +17,7 @@
         <div id="images-preview">
             {% if files %}
                 {% for image in files %}
-                    <div class="image">
+                    <div class="image" id={{image.id}}>
                         <img src="{{image.src}}" alt="{{image.name}}">
                         <i
                             class="material-icons"
@@ -27,9 +27,9 @@
                         </i>
                     </div>
                 {% endfor %}
-                <input type="hidden" name="removed_files">
             {% endif %}
         </div>
+        <input type="hidden" name="removed_files">
     </div>
 </div>
 

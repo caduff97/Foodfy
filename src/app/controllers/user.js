@@ -2,51 +2,70 @@ const Recipe = require("../models/Recipe")
 const Chef = require("../models/Chef")
 
 module.exports = {
-    index(req,res) {
-        Recipe.all((recipes) => {
-            const mostAcessed = []
-            
-            if(recipes.length > 6) {
-                for (i = 0; i < 6; i++) {
-                    mostAcessed.push(recipes[i])
-                }
-            }
+    async index(req,res) {
+        let results = await Recipe.all()
+        let recipes = results.rows
+        
+        if(recipes.length > 6) {
+            recipes = recipes.slice(0,6)
+        }
 
-            return res.render("user/index", { recipes: mostAcessed })
-        })
+        for (recipe of recipes) {
+            results = await Recipe.files(recipe.id)
+            const files = results.rows.map(file => ({
+                ...file,
+                src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+            }))
+            recipe.files = files
+        }
+
+        return res.render("user/index", { recipes })
     },
     about(req,res) {
         return res.render("user/about")
     },
-    recipes(req,res) {
+    async recipes(req,res) {
         
-        let { page, limit } = req.query
+        let { page, limit, filter } = req.query
 
         page = page || 1
         limit = limit || 6
         let offset = limit * (page - 1)
 
-        const params = {
-            limit,
-            offset,
-            callback(recipes) {
-                const pagination = {
-                    total: Math.ceil( recipes.length > 0 ? (recipes[0].total / limit) : 0),
-                    page
-                }
+        let results = await Recipe.paginate({ limit, offset, filter })
+        const recipes = results.rows
 
-                return res.render("user/recipes", { recipes, pagination })
-            }
+        const pagination = {
+            total: Math.ceil( recipes.length > 0 ? (recipes[0].total / limit) : 0),
+            page
         }
 
-        Recipe.paginate(params)
+        for (recipe of recipes) {
+            results = await Recipe.files(recipe.id)
+            const files = results.rows.map(file => ({
+                ...file,
+                src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+            }))
+            recipe.files = files
+        }
+
+        return filter ? res.render("user/search", { recipes, pagination, filter }) : res.render("user/recipes", { recipes, pagination })
+        
+        
     },
-    show(req,res) {
-        Recipe.find((req.params.id), (recipe) => {
-            if (!recipe) return res.send(`Recipe not found! <a href="/recipes">Click here to return</a>`)
-            
-            return res.render("user/recipe", { recipe })
-            })
+    async show(req,res) {
+        let results = await Recipe.find(req.params.id)
+        const recipe = results.rows[0]
+        
+        if (!recipe) return res.send(`Recipe not found! <a href="/recipes">Click here to return</a>`)
+
+        results = await Recipe.files(recipe.id)
+        const files = results.rows.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
+
+        return res.render("user/recipe", { recipe, files })
     },
     chefs(req,res) {
         Chef.all((chefs) => {

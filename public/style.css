@@ -616,7 +616,7 @@ header.admin #current-page {
 /* === RECIPE IMAGE MANAGER === */
 form .item .image-manager {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 150px 1fr;
     grid-gap: 10px;
 
     margin-top: 10px;
@@ -662,6 +662,18 @@ form .item #images-input {
 
 form .item #images-preview {
     position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    grid-gap: 10px;
+}
+
+form .item #images-preview .image {
+    position: relative;
+    
+    width: 150px;
+
+    border-radius: 3.5px;
 }
 
 form .item #images-preview .image img {

@@ -1,5 +1,6 @@
 const express = require("express")
 const routes = express.Router()
+const multer = require("./app/middlewares/multer")
 
 const user = require("./app/controllers/user")
 const recipes = require("./app/controllers/admin/recipes")
@@ -12,7 +13,7 @@ routes.get("/about", user.about)
 routes.get("/recipes", user.recipes)
 routes.get("/chefs", user.chefs)
 routes.get("/recipe/:id", user.show)
-routes.get("/recipes/search", user.search)
+routes.get("/recipes/search", user.recipes)
 
 
 /* ADMIN */
@@ -23,9 +24,9 @@ routes.get("/admin", (req, res) => {
 routes.get("/admin/recipes", recipes.index)
 routes.get("/admin/recipes/create", recipes.create)
 routes.get("/admin/recipe/:id", recipes.show)
-routes.post("/admin/recipes", recipes.post)
+routes.post("/admin/recipes", multer.array("images", 5), recipes.post)
 routes.get("/admin/recipe/:id/edit", recipes.edit)
-routes.put("/admin/recipes", recipes.put)
+routes.put("/admin/recipes", multer.array("images", 5), recipes.put)
 routes.delete("/admin/recipes", recipes.delete)
 
 routes.get("/admin/chefs", chefs.index)
